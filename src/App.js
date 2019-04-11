@@ -9,7 +9,8 @@ import DisplayBeers from './components/DisplayBeers';
 class App extends Component {
   render() {
     return (
-      <div className='App'>
+      <div className='app'>
+        {console.log(window.location.pathname)}
         <NavBar />
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/beers' component={DisplayBeers} />
