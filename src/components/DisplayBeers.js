@@ -29,10 +29,14 @@ class DisplayBeers extends React.Component {
     return (
       <div>
         <h1>DisplayBeers Page!</h1>
-        <button onClick={this.toggleAddBeer}>Add Beer</button>
+        <button onClick={this.toggleAddBeer}>Toggle Beer Form</button>
         {this.state.addBeer && <AddBeer beerHandler={this.beerHandler} />}
         {this.state.beers.map(beer => (
-          <DisplayOneBeer key={beer.id} beer={beer} />
+          <DisplayOneBeer
+            key={beer.id}
+            beer={beer}
+            beerHandler={this.beerHandler}
+          />
         ))}
       </div>
     );
