@@ -6,7 +6,6 @@ const NavBar = props => {
     <div>
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/beers'>The Cooler</NavLink>
-      <NavLink to='/beers/new'>Add Beer</NavLink>
     </div>
   );
 };
