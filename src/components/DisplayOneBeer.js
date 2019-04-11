@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Card, Icon } from 'semantic-ui-react';
 
 class DisplayOneBeer extends React.Component {
   constructor(props) {
@@ -30,13 +31,27 @@ class DisplayOneBeer extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Beer Name: {this.props.beer.name}</p>
-        <p>
-          Likes: <button onClick={this.decrementLikes}>-</button>{' '}
-          {this.state.likes} <button onClick={this.incrementLikes}>+</button>
-        </p>
-      </div>
+      <Card style={{ margin: '10px' }}>
+        <Card.Content>
+          <Card.Header>{this.props.beer.name}</Card.Header>
+        </Card.Content>
+        <Card.Content>
+          <Card.Meta>
+            Likes:{' '}
+            <Icon
+              style={{ color: '#1A3870', marginRight: '0' }}
+              onClick={this.decrementLikes}
+              name='minus square'
+            />
+            {this.state.likes}
+            <Icon
+              style={{ color: '#1A3870' }}
+              onClick={this.incrementLikes}
+              name='plus square'
+            />
+          </Card.Meta>
+        </Card.Content>
+      </Card>
     );
   }
 }

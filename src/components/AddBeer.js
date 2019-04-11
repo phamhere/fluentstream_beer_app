@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Segment, Form } from 'semantic-ui-react';
 
 class AddBeer extends React.Component {
   state = {
@@ -18,14 +19,8 @@ class AddBeer extends React.Component {
       likes: this.state.likes
     };
 
-    const axiosConfig = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-
     axios
-      .post('https://beer.fluentcloud.com/v1/beer', beerObj, axiosConfig)
+      .post('https://beer.fluentcloud.com/v1/beer', beerObj)
       .then(res => this.props.beerHandler())
       .catch(err => console.log(err));
 
@@ -35,23 +30,36 @@ class AddBeer extends React.Component {
   render() {
     const isEnabled = this.state.name.length > 0;
     return (
-      <div>
-        <h2>Add a Beer!</h2>
-        <form onSubmit={this.submitHandler}>
-          <input
-            type='text'
-            name='name'
-            value={this.state.name}
-            onChange={this.handleInputChange}
-          />
-          <input
-            type='number'
-            name='likes'
-            value={this.state.likes}
-            onChange={this.handleInputChange}
-          />
-          <button disabled={!isEnabled}>Add Beer</button>
-        </form>
+      <div className='addBeerFormDiv'>
+        <Segment style={{ background: '#F2F2F2' }}>
+          <Form onSubmit={this.submitHandler}>
+            <Form.Group widths='equal'>
+              <Form.Input label='Beer Name'>
+                <input
+                  type='text'
+                  name='name'
+                  value={this.state.name}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Input>
+              <Form.Input label='Number of Likes'>
+                <input
+                  type='number'
+                  name='likes'
+                  value={this.state.likes}
+                  onChange={this.handleInputChange}
+                />
+              </Form.Input>
+              <Form.Button
+                className='addBeerButton'
+                style={{ background: '#1A3870', color: 'white' }}
+                disabled={!isEnabled}
+              >
+                Add Beer
+              </Form.Button>
+            </Form.Group>
+          </Form>
+        </Segment>
       </div>
     );
   }

@@ -1,3 +1,20 @@
 .App {
   text-align: center;
 }
+
+.addBeerFormDiv {
+  max-width: 550px;
+  margin: 10px auto;
+}
+
+.addBeerButton {
+  padding-top: 23px;
+}
+
+.displayBeerDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  margin: 0 auto;
+}
